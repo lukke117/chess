@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
-// Uncomment lines 7 and 10 to view the visual layout at runtime.
-// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
+import 'Board.dart';
 
 void main() {
-  // debugPaintSizeEnabled = true;
-  runApp(MyApp());
+  runApp(MyChessApp());
+}
+
+class MyChessApp extends StatelessWidget {
+  const MyChessApp({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyApp()
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -37,7 +48,7 @@ class MyApp extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildButtonColumn(color, 'Play'),
+          _buildButtonColumn(color, 'Play',context ),
           _buildButtonColumn2(color, 'Online'),
         ],
       ),
@@ -89,10 +100,7 @@ class MyApp extends StatelessWidget {
     );
 */
 
-    return MaterialApp(
-      title: 'Chess',
-     // theme: new ThemeData(scaffoldBackgroundColor: const Color(0xFF165DC0)),
-      home: Scaffold(
+    return Scaffold(
 
         appBar: AppBar(
 
@@ -119,12 +127,12 @@ class MyApp extends StatelessWidget {
             */
           ],
         ),
-      ),
+
     );
   }
 //Bunch of columns or something idk
 
-  Column _buildButtonColumn(Color color, String label) {
+  Column _buildButtonColumn(Color color, String label,BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -140,7 +148,10 @@ class MyApp extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            print("Play");
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
           },
 
           child: Text("Play"),
@@ -174,7 +185,7 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
-  Column _buildButtonColumn3(Color color, String label) {
+  Column _buildButtonColumn3(Color color, String label,) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
