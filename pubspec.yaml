@@ -21,8 +21,12 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_chess_board: ^0.9.6
   flutter_stateless_chessboard: ^0.0.6
   chess: ^0.6.6
+  chess_vectors_flutter: ^1.0.12
+  flutter_statusbar_manager: ^2.0.0
+  url_launcher: ^6.0.3
   flutter:
     sdk: flutter
 
@@ -50,6 +54,7 @@ flutter:
     - images/background1.jpg
     - images/background2.jpg
     - images/background.png
+    - images/idk.jpeg
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

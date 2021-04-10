@@ -13,11 +13,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Random Chess"),
+        title: Text("Chess"),
       ),
       body: Center(
         child: Chessboard(
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                 _fen = nextFen;
               });
 
-              Future.delayed(Duration(milliseconds: 300)).then((_) {
+              /*Future.delayed(Duration(milliseconds: 300)).then((_) {
                 final nextMove = getRandomMove(_fen);
 
                 if (nextMove != null) {
@@ -43,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                     _fen = makeMove(_fen, nextMove);
                   });
                 }
-              });
+              });*/
             }
           },
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Board.dart';
+import 'package:chess123/pieces_page.dart';
 
 void main() {
   runApp(MyChessApp());
@@ -48,16 +49,16 @@ class MyApp extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildButtonColumn(color, 'Play',context ),
-          _buildButtonColumn2(color, 'Online'),
+          _buildButtonColumn(color, 'Play', context),
+          //_buildButtonColumn2(color, 'Online'),
         ],
       ),
     );
-    Widget lowerButton = Container(
+     Widget lowerButton = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildButtonColumn3(color, 'How To Play'),
+          _buildButtonColumn3(color, 'How To Play',context),
         ],
       ),
     );
@@ -66,73 +67,45 @@ class MyApp extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildIconButtonColumn(Color(0xFF2D365C),Icons.settings),
-          _buildIconButtonColumn1(Color(0xFF2D365C),Icons.settings),
-          _buildIconButtonColumn2(Color(0xFF2D365C),Icons.settings),
-          _buildIconButtonColumn3(Color(0xFF2D365C),Icons.settings),
+          _buildIconButtonColumn(color, 'Updates'),
+          //_buildIconButtonColumn1(Color(0xFF2D365C),Icons.settings),
+          //_buildIconButtonColumn2(Color(0xFF2D365C),Icons.settings),
+          //_buildIconButtonColumn3(Color(0xFF2D365C),Icons.settings),
         ],
       ),
     );
-  /*
-    Widget iconButton1 = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildIconButtonColumn1(color,Icons.settings),
-        ],
-      ),
-    );
-    Widget iconButton2 = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildIconButtonColumn2(color,Icons.settings),
-        ],
-      ),
-    );
-    Widget iconButton3 = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildIconButtonColumn3(color,Icons.settings),
-        ],
-      ),
-    );
-*/
 
     return Scaffold(
 
-        appBar: AppBar(
+      appBar: AppBar(
 
-          title: Text('Chess'),
+        title: Text('Chess'),
 
-        ),
-        body: ListView(
-          children: [
-            Image.asset(
-              'images/background2.jpg',
-              width: 600,
-              height: 340,
-              fit: BoxFit.cover,
-            ),
-            titleSection,
-            buttonSection,
-            SizedBox(height:20),
+      ),
+      body: ListView(
+        children: [
+          Image.asset(
+            'images/idk.jpeg',
+            width: 600,
+            height: 340,
+            fit: BoxFit.cover,
+          ),
+          titleSection,
+          buttonSection,
+          SizedBox(height:20),
             lowerButton,
-            SizedBox(height:35),
+            SizedBox(height:20),
             iconButton,
-         /*   iconButton1,
-            iconButton2,
-            iconButton3,
-            */
-          ],
-        ),
+
+        ],
+      ),
 
     );
   }
+
 //Bunch of columns or something idk
 
-  Column _buildButtonColumn(Color color, String label,BuildContext context) {
+  Column _buildButtonColumn(Color color, String label, BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -160,7 +133,7 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
-  Column _buildButtonColumn2(Color color, String label) {
+ /*Column _buildButtonColumn2(Color color, String label) {
       return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -184,8 +157,8 @@ class MyApp extends StatelessWidget {
 
       ],
     );
-  }
-  Column _buildButtonColumn3(Color color, String label,) {
+  }*/
+  Column _buildButtonColumn3(Color color, String label,BuildContext context,) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -201,8 +174,10 @@ class MyApp extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            print("How to play");
-          },
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PiecesPage()),
+            );},
 
           child: Text("How to play"),
         ),
@@ -210,7 +185,32 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
+  Column _buildIconButtonColumn(Color color, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                if (states.contains(MaterialState.pressed))
+                  return Colors.green;
+                return Color(0xFF2D365C);
+              },
+            ),
+          ),
+          onPressed: () {
+            print("");
+          },
 
+          child: Text("Updates"),
+        ),
+
+      ],
+    );
+  }
+/*
   Column _buildIconButtonColumn(Color color,IconData icon) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -227,6 +227,7 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
+
   Column _buildIconButtonColumn1(Color color,IconData icon,) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -272,4 +273,5 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
+*/
 }
