@@ -116,7 +116,7 @@ class MyCustomRoute<T> extends MaterialPageRoute<T> {
       return child;
     // Fades between routes. (If you don't want any animation,
     // just return child.)
-    return new SlideTransition(
+    /*return new SlideTransition(
       position: new Tween<Offset>(
         begin: const Offset(1.0, 0.0),
         end: Offset.zero,
@@ -128,6 +128,6 @@ class MyCustomRoute<T> extends MaterialPageRoute<T> {
         ).animate(secondaryAnimation),
         child: child,
       ),
-    );
+    );*/
   }
 }

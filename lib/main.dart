@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
 import 'Board.dart';
 import 'package:chess123/pieces_page.dart';
-
 void main() {
   runApp(MyChessApp());
 }
 
 class MyChessApp extends StatelessWidget {
+
   const MyChessApp({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const PrimaryColor = const Color(0xFF151026);
     return MaterialApp(
+        theme: ThemeData(
+          primaryColor: PrimaryColor,
+        ),
+        debugShowCheckedModeBanner: false,
       home: MyApp()
     );
   }
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     Widget titleSection = Container(
@@ -67,7 +73,7 @@ class MyApp extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildIconButtonColumn(color, 'Updates'),
+          _buildIconButtonColumn(color, 'Updates', context),
           //_buildIconButtonColumn1(Color(0xFF2D365C),Icons.settings),
           //_buildIconButtonColumn2(Color(0xFF2D365C),Icons.settings),
           //_buildIconButtonColumn3(Color(0xFF2D365C),Icons.settings),
@@ -81,9 +87,11 @@ class MyApp extends StatelessWidget {
 
         title: Text('Chess'),
 
+
       ),
       body: ListView(
         children: [
+
           Image.asset(
             'images/idk.jpeg',
             width: 600,
@@ -116,7 +124,7 @@ class MyApp extends StatelessWidget {
                   (Set<MaterialState> states) {
                 if (states.contains(MaterialState.pressed))
                   return Colors.green;
-                return Color(0xFF2D365C);
+                return Color(0xFF151026);
               },
             ),
           ),
@@ -169,7 +177,7 @@ class MyApp extends StatelessWidget {
                   (Set<MaterialState> states) {
                 if (states.contains(MaterialState.pressed))
                   return Colors.green;
-                return Color(0xFF2D365C);
+                return Color(0xFF151026);
               },
             ),
           ),
@@ -185,7 +193,7 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
-  Column _buildIconButtonColumn(Color color, String label) {
+  Column _buildIconButtonColumn(Color color, String label, BuildContext context,) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -196,13 +204,11 @@ class MyApp extends StatelessWidget {
                   (Set<MaterialState> states) {
                 if (states.contains(MaterialState.pressed))
                   return Colors.green;
-                return Color(0xFF2D365C);
+                return Color(0xFF151026);
               },
             ),
           ),
-          onPressed: () {
-            print("");
-          },
+          onPressed: () {},
 
           child: Text("Updates"),
         ),
