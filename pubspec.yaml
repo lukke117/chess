@@ -21,7 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  kumi_popup_window: ^1.0.12
+
   flutter_chess_board: ^0.9.6
   flutter_stateless_chessboard: ^0.0.6
   chess: ^0.6.6
@@ -30,6 +30,8 @@ dependencies:
   url_launcher: ^6.0.3
   flutter:
     sdk: flutter
+  shared_preferences: ^2.0.6
+  provider: ^5.0.0
 
 
 
@@ -40,6 +42,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
